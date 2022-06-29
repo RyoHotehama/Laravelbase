@@ -1,0 +1,16 @@
+<html>
+  <head></head>
+  <body>
+    <div>
+      <div>
+        <h2>ようこそアブランさん</h2>
+      </div>
+      <div>
+        <h3>本日のメニュー</h3>
+      </div>
+      <div>
+        <h4>明日のメニュー</h4>
+      </div>
+    </div>
+  </body>
+</html>
