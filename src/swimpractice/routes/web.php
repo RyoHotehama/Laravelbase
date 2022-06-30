@@ -17,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 Route::get('/', 'TopController@index');
+Route::get('/swim', 'SwimController@index');
+Route::get('/swim/practice', 'SwimController@practice');

@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>@yield('title')</title>
+  </head>
+  <body>
+    <div>
+      @include('Common.header')
+    </div>
+    <div>
+      @include('Common.sidebar')
+    </div>
+    <div>
+      @yield('content')
+    </div>
+    <div>
+      @include('Common.footer')
+    </div>
+  </body>
+</html>
