@@ -1,6 +1,8 @@
 # どんな docker イメージを利用して構築をするか
 # FROM : ここではPHPの公式イメージである「php:7.4-apache」というあらかじめPHPとApacheがインストールされているイメージを、Docker Hubというサイトからダウンロードしてくるようになっている。
 FROM php:7.4-apache
+# FROM postgres:13-alpine
+# ENV LANG ja_JP.utf8
 
 # 設定ファイルをdockerコンテナ内のPHP、Apacheに読み込ませる
 # ADD：ローカルのファイルをDockerコンテナ内にコピーする
