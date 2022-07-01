@@ -17,7 +17,8 @@
   </div>
   @endif
   <div>
-    <form>
+    <form action = "" method = "post">
+      @csrf
       <div>日付</div>
       <div>
         <input type = "date" name = "date" value = "{{old('date')}}">
