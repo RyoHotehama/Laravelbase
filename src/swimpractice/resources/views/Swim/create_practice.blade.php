@@ -1,6 +1,6 @@
 @extends('Layouts.base')
 
-@section('title', '練習ページ(水泳)トップ')
+@section('title', '練習作成ページ')
 
 @section('content')
 <div>
@@ -11,16 +11,17 @@
   <div>
     <ul>
       @foreach ($errors->all() as $error)
-        <li>{{$error}}</li>
+        <li class = "text-danger">{{$error}}</li>
       @endforeach
     </ul>
   </div>
   @endif
   <div>
-    <form action = "" method = "post">
+    <form action = "/swim/complete" method = "post">
       @csrf
       <div>日付</div>
       <div>
+        <input type = "hidden" name = "user_id" value = "1">
         <input type = "date" name = "date" value = "{{old('date')}}">
       </div>
       <table>
@@ -31,6 +32,7 @@
         <th></th>
         <th>セット数</th>
         <th>サイクル</th>
+        <th></th>
         <th>備考</th>
         </tr>
         <tr>
@@ -41,7 +43,8 @@
           <td><input type = "number" name = "number" min = "1" value = "{{old('number')}}"></td>
           <td>✖️</td>
           <td><input type = "number" name = "set" min = "1" value = "{{old('set')}}"></td>
-          <td><input type = "time" name = "time" value = "{{old('time')}}"></td>
+          <td><input type = "number" name = "minutes" min = "0" value = "{{old('minutes')}}">分</td>
+          <td><input type = "number" name = "secound" min = "0" value = "{{old('secound')}}">秒</td>
           <td><input type = "text" name = "body" value = "{{old('body')}}"></td>
         </tr>
       </table>

@@ -1,8 +1,12 @@
-<div class = "d-flex justify-content-center">
-  <div>
-  <p>表紙</p>
+<div class = "row">
+  <div class = "col-6">
+    <a href = "/">
+      <p class = "text-white textSet">表紙</p>
+    </a>
   </div>
-  <div class = >
-    <p>ログアウト</p>
+  <div class = "col-6">
+    <a href = "/">
+      <p class = "text-white textSet">ログアウト</p>
+    </a>
   </div>
 </div>

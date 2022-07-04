@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\SwimMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +20,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'TopController@index');
 Route::get('/swim', 'SwimController@index');
 Route::get('/swim/practice', 'SwimController@practice');
-Route::post('/swim/practice', 'SwimController@post');
+Route::post('/swim/complete', 'SwimController@complete')->middleware(SwimMiddleware::class);
+Route::get('/swim/edit', 'SwimController@edit');
+Route::post('/swim/edit', 'SwimController@update')->middleware(SwimMiddleware::class);
