@@ -11,9 +11,11 @@
         @include('Common.header')
       </div>
       <div class = "row h-75">
+        @if (!empty(Auth::user()))
         <div class = "col-2 bg-info">
           @include('Common.sidebar')
         </div>
+        @endif
         <div class = "col-10">
           @yield('content')
         </div>

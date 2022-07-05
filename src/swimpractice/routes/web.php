@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/', 'TopController@index');
+Route::get('/', 'TopController@index')->name('top');
 Route::get('/logout', 'TopController@logout');
 Route::get('/swim', 'SwimController@index');
 Route::get('/swim/practice', 'SwimController@practice');
