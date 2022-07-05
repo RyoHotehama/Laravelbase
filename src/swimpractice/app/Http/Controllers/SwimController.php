@@ -4,11 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Validator;
-use App\Models\Swims;
+use App\Models\Swim;
 use Carbon\Carbon;
 
 class SwimController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         // 本日の日付を取得
@@ -16,14 +26,14 @@ class SwimController extends Controller
         //１週間後の日付を取得
         $weekday = Carbon::now()->addDay(7)->toDateString();
         // 本日のメニューを取得
-        $data = Swims::where('date', $today)->get();
+        $data = Swim::where('date', $today)->get();
         foreach ($data as $value) {
             // 時間表示の変更
             $value->time = $this->timeChange($value->time);
         }
 
         // １週間のメニューを取得
-        $week_data = Swims::whereRaw('date > ? and date <= ?', [$today, $weekday])->get();
+        $week_data = Swim::whereRaw('date > ? and date <= ?', [$today, $weekday])->get();
         foreach ($week_data as $value) {
             // 日付表示の変更
             $value->date = date('Y年m月d日', strtotime($value->date));
@@ -51,9 +61,9 @@ class SwimController extends Controller
     public function complete(Request $request)
     {
         // バリデーション
-        $this->validate($request, Swims::$rules, Swims::$messages);
+        $this->validate($request, Swim::$rules, Swim::$messages);
         // データの登録
-        $swim = new Swims;
+        $swim = new Swim;
         $form = $request->all();
         unset($form['_token']);
         $swim->fill($form)->save();
@@ -80,7 +90,7 @@ class SwimController extends Controller
                 return redirect('/swim/edit')->withErrors($validator)->withInput();
             }
              // データの取得
-            $data = Swims::where('date', $date)->get();
+            $data = Swim::where('date', $date)->get();
             foreach ($data as $value) {
                 // 時間表示の変更
                 $value->time = $this->setTime($value);
@@ -97,8 +107,8 @@ class SwimController extends Controller
      */
     public function update(Request $request) {
         // バリデーション
-        $this->validate($request, Swims::$rules, Swims::$messages);
-        $swim = Swims::find($request->id);
+        $this->validate($request, Swim::$rules, Swim::$messages);
+        $swim = Swim::find($request->id);
         $form = $request->all();
         unset($form['_token']);
         $swim->fill($form)->save();

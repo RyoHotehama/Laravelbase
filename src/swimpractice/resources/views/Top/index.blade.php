@@ -4,7 +4,7 @@
 
 @section('content')
 <div>
-  <h2>ようこそ匿名さん</h2>
+  <h2>ようこそ{{Auth::user()->name}}さん</h2>
 </div>
 <div>
   <h3>本日のメニュー</h3>

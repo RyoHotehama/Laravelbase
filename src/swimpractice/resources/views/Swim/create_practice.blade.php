@@ -21,7 +21,6 @@
       @csrf
       <div>日付</div>
       <div>
-        <input type = "hidden" name = "user_id" value = "1">
         <input type = "date" name = "date" value = "{{old('date')}}">
       </div>
       <table>
@@ -37,14 +36,14 @@
         </tr>
         <tr>
           <td>
-            <input type = "number" name = "distance" min = "25" step = "25" value = "{{old('distance')}}">
+            <input type = "number" name = "distance" min = "25" max = "1500" step = "25" value = "{{old('distance')}}">
           </td>
           <td>✖️</td>
-          <td><input type = "number" name = "number" min = "1" value = "{{old('number')}}"></td>
+          <td><input type = "number" name = "number" min = "1" max = "100" value = "{{old('number')}}"></td>
           <td>✖️</td>
-          <td><input type = "number" name = "set" min = "1" value = "{{old('set')}}"></td>
-          <td><input type = "number" name = "minutes" min = "0" value = "{{old('minutes')}}">分</td>
-          <td><input type = "number" name = "secound" min = "0" value = "{{old('secound')}}">秒</td>
+          <td><input type = "number" name = "set" min = "1" max = "100" value = "{{old('set')}}"></td>
+          <td><input type = "number" name = "minutes" min = "0" max = "60" value = "{{old('minutes')}}">分</td>
+          <td><input type = "number" name = "secound" min = "0" max = "55" step = "5" value = "{{old('secound')}}">秒</td>
           <td><input type = "text" name = "body" value = "{{old('body')}}"></td>
         </tr>
       </table>

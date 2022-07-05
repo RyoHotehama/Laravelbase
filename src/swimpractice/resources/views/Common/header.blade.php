@@ -5,7 +5,7 @@
     </a>
   </div>
   <div class = "col-6">
-    <a href = "/">
+    <a href = "{{ route('logout') }}">
       <p class = "text-white textSet">ログアウト</p>
     </a>
   </div>

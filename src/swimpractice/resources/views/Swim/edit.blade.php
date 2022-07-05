@@ -53,14 +53,14 @@
           @endif
             <tr>
               <td>
-                <input type = "number" name = "distance" min = "25" step = "25" value = "{{$value->distance}}">
+                <input type = "number" name = "distance" min = "25" max = "1500" step = "25" value = "{{$value->distance}}">
               </td>
               <td>✖️</td>
-              <td><input type = "number" name = "number" min = "1" value = "{{$value->number}}"></td>
+              <td><input type = "number" name = "number" min = "1" max = "100" value = "{{$value->number}}"></td>
               <td>✖️</td>
-              <td><input type = "number" name = "set" min = "1" value = "{{$value->set}}"></td>
-              <td><input type = "number" name = "minutes" min = "0" value = "{{$value->minutes}}">分</td>
-              <td><input type = "number" name = "secound" min = "0" value = "{{$value->secound}}">秒</td>
+              <td><input type = "number" name = "set" min = "1" max = "100" value = "{{$value->set}}"></td>
+              <td><input type = "number" name = "minutes" min = "0" max = "60" value = "{{$value->minutes}}">分</td>
+              <td><input type = "number" name = "secound" min = "0" max = "55" step = "5" value = "{{$value->secound}}">秒</td>
               <td><input type = "text" name = "body" value = "{{$value->body}}"></td>
             </tr>
       @endforeach
