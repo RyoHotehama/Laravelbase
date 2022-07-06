@@ -19,6 +19,10 @@ class SwimController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * 練習メニュー表示ページ
+     * @return void
+     */
     public function index()
     {
         // 本日の日付を取得
@@ -33,7 +37,7 @@ class SwimController extends Controller
         }
 
         // １週間のメニューを取得
-        $week_data = Swim::whereRaw('date > ? and date <= ?', [$today, $weekday])->get();
+        $week_data = Swim::whereRaw('date > ? and date <= ?', [$today, $weekday])->orderBy('date', 'asc')->get();
         foreach ($week_data as $value) {
             // 日付表示の変更
             $value->date = date('Y年m月d日', strtotime($value->date));
@@ -113,6 +117,7 @@ class SwimController extends Controller
         unset($form['_token']);
         $swim->fill($form)->save();
         $msg = '更新しました';
+
         return view('Swim.edit', ['msg' => $msg]);
     }
 

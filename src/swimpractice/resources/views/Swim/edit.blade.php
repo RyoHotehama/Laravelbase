@@ -37,7 +37,7 @@
         @if ($loop->first)
         <div>
           <div>
-            <p>日付：<input type = "date" name = "date" value = "{{$value->date}}"></p>
+            <p>練習日：<input type = "date" name = "date" value = "{{$value->date}}"></p>
           </div>
           <table>
             <tr>

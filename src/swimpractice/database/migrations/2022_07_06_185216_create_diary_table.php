@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSwimTable extends Migration
+class CreateDiaryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class CreateSwimTable extends Migration
      */
     public function up()
     {
-        Schema::create('swims', function (Blueprint $table) {
+        Schema::create('diaries', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
-            $table->integer('distance');
-            $table->integer('number');
-            $table->integer('set');
-            $table->datetime('time');
-            $table->string('body')->nullable();
             $table->integer('user_id');
+            $table->string('title');
+            $table->integer('evaluation');
+            $table->text('body');
             $table->integer('delete_flg')->default(0);
+            $table->date('date');
+            $table->date('practice_date');
             $table->timestamps();
         });
     }
@@ -34,6 +33,6 @@ class CreateSwimTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('swim');
+        Schema::dropIfExists('diary');
     }
 }

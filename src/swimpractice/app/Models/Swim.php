@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Swim extends Model
 {
@@ -28,4 +30,13 @@ class Swim extends Model
         'set.integer' => 'セット数が不正です。',
         'time.required' => 'サイクルが入力されていません。',
     );
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('user_id', function (Builder $builder) {
+            $builder->where('user_id', Auth::id());
+        });
+    }
 }
