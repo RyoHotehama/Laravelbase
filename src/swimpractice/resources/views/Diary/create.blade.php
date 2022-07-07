@@ -9,7 +9,7 @@
       <p>日誌</p>
     </div>
     <div>
-      <p>日付：2022年7月6日</p>
+      <p>日付：{{$today}}</p>
     </div>
     <div>
       <form action = "" method = "get">
@@ -17,7 +17,7 @@
           <label>練習日</label>
         </div>
         <div>
-          <input type = "date" name = "date" value = "">
+          <input type = "date" name = "date" value = "{{old('date')}}">
         </div>
         <div>
           <button>検索</button>
@@ -30,14 +30,19 @@
         <diV>
           <form action = "" method = "post">
             @csrf
-            <input type = "hidden" name = "date" value = "">
-            <input type = "hidden" name = "practice_date" value = "">
+            <input type = "hidden" name = "date" value = "{{$today}}">
+            <input type = "hidden" name = "practice_date" value = "{{$date}}">
             <div>
               <div>
                 <label>タイトル</label>
               </div>
               <div>
                 <input type = "text" name = "title" value = "{{old('title')}}">
+                @error('title')
+                <span>
+                  <strong>{{$message}}</strong>
+                </span>
+                @enderror
               </div>
             </div>
             <div>
@@ -46,6 +51,11 @@
               </div>
               <div>
                 <input type = "number" name = "evaluation" min = "1" max = "5" value = "{{old('evaluation')}}">
+                @error('evaluation')
+                <span>
+                  <strong>{{$message}}</strong>
+                </span>
+                @enderror
               </div>
             </div>
             <div>
@@ -54,7 +64,15 @@
               </div>
               <div>
                 <input type = "textarea" name = "body" value = "{{old('body')}}">
+                @error('body')
+                <span>
+                  <strong>{{$message}}</strong>
+                </span>
+                @enderror
               </div>
+            </div>
+            <div>
+              <button>登録</button>
             </div>
           </form>
         </diV>
@@ -89,6 +107,8 @@
         </div>
       </div>
     </div>
+    @elseif (!empty($diary))
+    <!-- todo -->
     @endif
   </div>
 </div>

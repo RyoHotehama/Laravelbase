@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\SwimMiddleware;
+use App\Http\Middleware\DiaryMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,6 @@ Route::post('/swim/complete', 'SwimController@complete')->middleware(SwimMiddlew
 Route::get('/swim/edit', 'SwimController@edit');
 Route::post('/swim/edit', 'SwimController@update')->middleware(SwimMiddleware::class);
 Route::get('/diary', 'DiaryController@view');
-Route::post('/diary', 'DiaryController@register');
+Route::post('/diary', 'DiaryController@register')->middleware(DiaryMiddleware::class);
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
